@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Filmojo</title>
+    <style media="screen">
+    body {
+        background: linear-gradient(-45deg, #000000, #150050, #A12568);
+        background-size: 400% 400%;
+        animation: gradient 10s ease infinite;
+        height: 100vh;
+        }
+    @keyframes gradient {
+    	0% {
+    		background-position: 0% 50%;
+    	}
+    	50% {
+    		background-position: 100% 50%;
+    	}
+    	100% {
+    		background-position: 0% 50%;
+    	}
+    }
+      .center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 250px;
+      }
+      .desc{
+        font-family: "Segoe UI";
+        font-weight: lighter;
+        font-size: 15px;
+        color: #ff4b9f;
+        text-align: center;
+      }
+      button{
+        font-size:15px;
+        font-family: Gotham;
+        font-weight: bold;
+        width:80px;
+        height:30px;
+        border-width:0px;
+        color: #000;
+        background-color: #F94C66;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div class="center">
+      <img src="Images/Filmojo.png" class="logo" alt="" height="0" width="500">
+    </div>
+    <div class="" style="margin-top:300px">
+      <h2 class="desc" style="margin-top: 50px;">A Movies Catalog website</h2>
+      <!-- <h2 class="desc" style="margin-top: -13px;">having latest and old movies, series & TV shows with cast & crew details</h2> -->
+    </div>
+
+    <script type="text/javascript">
+      $(".desc").css('opacity',0);
+      // $("button").css('opacity',0);
+       $(".logo").animate({ width: "500 px", height: "130px"}, 2000);
+      setTimeout(function () {
+        $(".desc").animate({ opacity: "100%"}, 1000);
+      },2000);
+      setTimeout(function () {
+        window.location.replace("main.html");
+      },4000);
+    </script>
+
+  </body>
+</html>

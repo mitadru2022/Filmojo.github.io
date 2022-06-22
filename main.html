@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Filmojo - trending</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+    <img src="Images/Filmojo.png" alt="" class="logo" height="55" width="200">
+    <br>
+    <div class="topButton">
+      <input type="text" name="" value="" placeholder="Search movies & series" id="search-box">
+      <button type="button" name="button" id="search">Search</button>
+      <button type="button" name="button" class="trendz">Trendzz now</button>
+    </div>
+    <h1>Trenzz Now</h1>
+
+<!-- THE TRNDING MOVIE LIST -->
+
+    <div id="main" style="display: flex; justify-content: center;">
+
+      <div class="display" id="m1" onclick="showInfo(this)">
+        <img src="Images/Image.jpg" alt="" height="200" width="160">
+        <div class="filmbox">
+          <h2 class="boxtitle">Movie Title</h2>
+          <p class="boxtitle" style="font-size: 10px; font-weight: normal">Genre</p>
+          <p class="boxtitle id" style="font-size: 7px; font-weight: bold; color: #FAC213">Imdb id</p>
+        </div>
+      </div>
+
+      <div class="display" id="m2" onclick="showInfo(this)">
+        <img src="Images/Image.jpg" alt="" height="200" width="160">
+        <div class="filmbox">
+          <h2 class="boxtitle">Movie Title</h2>
+          <p class="boxtitle" style="font-size: 10px; font-weight: normal">Genre</p>
+          <p class="boxtitle id" style="font-size: 7px; font-weight: bold; color: #FAC213">Imdb id</p>
+        </div>
+      </div>
+
+      <div class="display" id="m3" onclick="showInfo(this)">
+        <img src="Images/Image.jpg" alt="" height="200" width="160">
+        <div class="filmbox">
+          <h2 class="boxtitle">Movie Title</h2>
+          <p class="boxtitle" style="font-size: 10px; font-weight: normal">Genre</p>
+          <p class="boxtitle id" style="font-size: 7px; font-weight: bold; color: #FAC213">Imdb id</p>
+        </div>
+      </div>
+
+      <div class="display" id="m4" onclick="showInfo(this)">
+        <img src="Images/Image.jpg" alt="" height="200" width="160">
+        <div class="filmbox">
+          <h2 class="boxtitle">Movie Title</h2>
+          <p class="boxtitle" style="font-size: 10px; font-weight: normal">Genre</p>
+          <p class="boxtitle id" style="font-size: 7px; font-weight: bold; color: #FAC213">Imdb id</p>
+        </div>
+      </div>
+
+      <div class="display" id="m5" onclick="showInfo(this)">
+        <img src="Images/Image.jpg" alt="" height="200" width="160">
+        <div class="filmbox">
+          <h2 class="boxtitle">Movie Title</h2>
+          <p class="boxtitle" style="font-size: 10px; font-weight: normal">Genre</p>
+          <p class="boxtitle id" style="font-size: 7px; font-weight: bold; color: #FAC213">Imdb id</p>
+        </div>
+      </div>
+
+    </div>
+
+<!-- THE INFORMATION STARTS -->
+
+    <div class="" id="info">
+      <div class="left-info" style="width: 350px;">
+        <h2>Movie title</h2>
+        <h3>Genre</h3>
+        <button type="text" name="button" id="rate">IMDB</button>
+        <h3 id="dated" style="color:#fff;">Released on:</h3>
+        <h3 id="run" style="color:#fff; font-weight: normal; margin-top: -10px;">Duration:</h3>
+        <h3 id="lang" style="color:#fff">Language:</h3>
+        <h3 id="dir">Director</h3>
+        <h4 style="font-size: 20px; margin-bottom: 15px;">Actors</h4>
+        <h3 id="act">Actors</h3>
+        <br>
+        <h4 style="font-size: 20px; margin-bottom: 20px; margin-top: 20px;">Plot</h4>
+        <p>Plot not found</p>
+        <h3 id="wri">Writer</h3>
+        <br>
+        <button type="button" name="button" id="back">Go Back</button>
+      </div>
+      <div class="right-info" style="margin-left: 100px;">
+        <img src="Images/Image.jpg" alt="notFound.png" height="350" width="270">
+      </div>
+    </div>
+
+<!-- THE SEARCH ITEMS -->
+
+    <button type="button" name="button" id="back2"> << Go Back</button>
+    <div id="main2" style="display: flex; justify-content: center; flex-wrap: wrap; position: absolute; margin-top:20px;">
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="clientSide.js" charset="utf-8"></script>
+  </body>
+</html>
