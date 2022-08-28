@@ -14,24 +14,31 @@ var imgurl = "https://img.omdbapi.com/?apikey=1f219e9c&i="
 ShowMovies();
 
 function ShowMovies() {
-  for(let i=0; i<movielist.length; i++){
-    var url2 = url + movielist[i];
-    var imgurl2 = imgurl + movielist[i];
-    // console.log(url2);
+  var element = document.getElementById("main");
+  element.innerHTML = "";
+  var tmdb = "https://api.themoviedb.org/3/trending/movie/week?api_key=fe7240e8f4f08b023dabb986b460b39a";
 
-    function ReplaceData() {
-      fetch(url2).then(res => res.json())
-        .then(data => {
-          var x = i+1;
-          var curID = '#m'+ String(x);
-          $(`${curID} > .filmbox > h2`).html(data.Title);
-          $(`${curID} > .filmbox > p`).html(data.Genre);
-          $(`${curID} > .filmbox > .id`).html(data.imdbID);
-          $(`${curID} > img`).attr({src: data.Poster});
-        });
+  fetch(tmdb).then(res => res.json()).then(datas => {
+    var data = datas.results;
+
+    for(var i=0; i<data.length; i++){
+      var tmdbID = "https://api.themoviedb.org/3/movie/"+ data[i].id +"?api_key=fe7240e8f4f08b023dabb986b460b39a";
+
+      fetch(tmdbID).then(res => res.json()).then(details =>{
+        var gen = "";
+        for(var j=0; j<details.genres.length; j++) gen += details.genres[j].name + ", ";
+
+        element.innerHTML += `<div class="display" onclick="showInfo(this)">
+          <img src="${'https://image.tmdb.org/t/p/original/'+ details.poster_path}" alt="" height="200" width="160">
+          <div class="filmbox">
+            <h2 class="boxtitle">${details.title}</h2>
+            <p class="boxtitle" style="font-size: 10px; font-weight: normal">${gen}</p>
+            <p class="boxtitle id" style="font-size: 7px; font-weight: bold; color: #FAC213">${details.imdb_id}</p>
+          </div>`
+      });
     }
-    ReplaceData();
-  }
+    });
+
 }
 
 async function showInfo(eve) {
@@ -57,31 +64,35 @@ async function showInfo(eve) {
   $("#main").slideUp();
   $("#main2").slideUp();
   $("h1").slideUp();
-  $("#info").slideDown();
   $("#back2").slideUp();
+  setTimeout(function () {
+    $("#info").slideDown();
+  },500);
+
 }
 
 $("#back").click(function () {
   $("#info").slideUp();
-  if(isSearch){
-    $("#main2").slideDown();
-    $("#back2").slideDown();
-  }
-  else {
-    $("#main").slideDown();
-    $("h1").slideDown();
-  }
+  setTimeout(function () {
+    if(isSearch){
+      $("#main2").slideDown();
+      $("#back2").slideDown();
+    }
+    else {
+      $("#main").slideDown();
+      $("h1").slideDown();
+    }
+  },500);
 });
 
 $(".trendz").click(function () {
-  $("#main").slideDown();
-  $("h1").slideDown();
   $("#info").slideUp();
   $("#main2").slideUp();
   $("#back2").slideUp();
+  $("#main").slideDown();
+  $("h1").slideDown();
   isSearch = false;
 });
-
 
 // SEARCH Movies
 
@@ -90,12 +101,13 @@ $("#search").click(async function () {
   $("#info").slideUp();
   $("#main").slideUp();
   $("#back2").slideDown();
-  $("#main2").slideDown();
 
   var quary = $("#search-box").val();
   stack.push(quary);
   count = 1;
-  displayAllMovies(quary);
+  setTimeout(function () {
+    displayAllMovies(quary);
+  },500);
 });
 
 async function displayAllMovies(quary) {
@@ -128,7 +140,7 @@ async function displayAllMovies(quary) {
       </div>`
     }
     isSearch = true;
-    console.log(data.Search);
+    $("#main2").slideDown();
   });
 }
 
@@ -137,10 +149,11 @@ $("#back2").click(function () {
   myMovieDivs.innerHTML = "";
   if(1 === count--) stack.pop();
   if(stack.length===0){
-    $("h1").slideDown();
-    $("#main").slideDown();
     $("#back2").slideUp();
     $("#info").slideUp();
+    $("#main2").slideUp();
+    $("h1").slideDown();
+    $("#main").slideDown();
     isSearch = false;
   }
   else displayAllMovies(stack.pop());
